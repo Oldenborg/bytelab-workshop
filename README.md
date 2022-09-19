@@ -57,3 +57,7 @@ npm run test:e2e # or `npm run test:e2e:ci` for headless testing
 ```sh
 npm run lint
 ```
+
+### OMDb API
+OMDb API: http://www.omdbapi.com/?i=tt3896198&apikey=fdb9148b
+Poster API: http://img.omdbapi.com/?i=tt3896198&h=600&apikey=fdb9148b
