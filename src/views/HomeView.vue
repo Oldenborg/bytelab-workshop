@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { ref } from "vue";
 import PosterTile from "@/components/PosterTile.vue";
 import RoundButton from "../components/RoundButton.vue";
 import HeartIcon from "../components/icons/HeartIcon.vue";
@@ -29,7 +29,14 @@ const addMovie = (movie: Movie) => {
   movies.value?.push(movie);
 };
 
-const inCollection = (movie) => {
+const removeMovie = (movie: Movie) => {
+  movies.value =
+    movies.value?.filter((m) => {
+      return m != movie;
+    }) || [];
+};
+
+const inCollection = (movie: Movie) => {
   return movies.value?.includes(movie);
 };
 </script>
