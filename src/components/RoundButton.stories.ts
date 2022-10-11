@@ -4,9 +4,8 @@ export default {
   title: "Components/ RoundButton",
   component: Component,
   argTypes: {
-    title: { control: "text" },
-    image: { control: "text" },
-    year: { control: "text" },
+    success: { control: "boolean" },
+    danger: { control: "boolean" },
   },
 };
 
@@ -20,7 +19,6 @@ const Template = (args) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  title: "Rambo",
-  image: "https://placehold.co/300x445",
-  year: "2013",
+  danger: true,
+  success: false,
 };
