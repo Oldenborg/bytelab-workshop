@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import PosterTile from "@/components/PosterTile.vue";
 import RoundButton from "../components/RoundButton.vue";
 import HeartIcon from "../components/icons/HeartIcon.vue";
+import TrashIcon from "../components/icons/TrashIcon.vue";
 
 type Movie = {
   Poster: string;
@@ -27,6 +28,10 @@ const search = async () => {
 const addMovie = (movie: Movie) => {
   movies.value?.push(movie);
 };
+
+const inCollection = (movie) => {
+  return movies.value?.includes(movie);
+};
 </script>
 
 <template>
@@ -44,9 +49,16 @@ const addMovie = (movie: Movie) => {
     <div v-for="movie in data.Search" class="movie" :key="movie.imdbID">
       <PosterTile :title="movie.Title" :image="movie.Poster" :year="movie.Year">
         <template #top>
-          <RoundButton @click="addMovie(movie)" success>
-            <HeartIcon width="20px"></HeartIcon>
-          </RoundButton>
+          <template v-if="!inCollection(movie)">
+            <RoundButton @click="addMovie(movie)" success>
+              <HeartIcon width="20px"></HeartIcon>
+            </RoundButton>
+          </template>
+          <template v-else>
+            <RoundButton @click="removeMovie(movie)" danger>
+              <TrashIcon width="20px"></TrashIcon>
+            </RoundButton>
+          </template>
         </template>
       </PosterTile>
     </div>
