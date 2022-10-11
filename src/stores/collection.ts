@@ -22,4 +22,10 @@ export const useCollectionStore = defineStore({
         }) || [];
     },
   },
+  getters: {
+    hasMovie(state: CollectionState) {
+      return (movieId: string) =>
+        state.movies.find((movie) => movie.imdbID === movieId);
+    },
+  },
 });

@@ -25,8 +25,8 @@ const removeMovie = (movie: Movie) => {
   collectionStore.removeMovie(movie);
 };
 
-const inCollection = (movie: Movie) => {
-  return movies.value?.includes(movie);
+const inCollection = (movieId: string) => {
+  return collectionStore.hasMovie(movieId);
 };
 </script>
 
@@ -47,7 +47,7 @@ const inCollection = (movie: Movie) => {
     <div v-for="movie in movieStore.movies" class="movie" :key="movie.imdbID">
       <PosterTile :title="movie.Title" :image="movie.Poster" :year="movie.Year">
         <template #top>
-          <template v-if="!inCollection(movie)">
+          <template v-if="!inCollection(movie.imdbID)">
             <RoundButton @click="addMovie(movie)" success>
               <HeartIcon width="20px"></HeartIcon>
             </RoundButton>
