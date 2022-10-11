@@ -4,25 +4,16 @@ import PosterTile from "@/components/PosterTile.vue";
 import RoundButton from "../components/RoundButton.vue";
 import HeartIcon from "../components/icons/HeartIcon.vue";
 import TrashIcon from "../components/icons/TrashIcon.vue";
+import { useMovieStore, type Movie } from "@/stores/movies";
 
-type Movie = {
-  Poster: string;
-  Title: string;
-  Type: string;
-  Year: string;
-  imdbID: string;
-};
-
-const query = ref<string | null>(null);
+const query = ref<string>("");
 const data = ref<any | null>(null);
 const movies = ref<Movie[] | null>([]);
 
+const movieStore = useMovieStore();
+
 const search = async () => {
-  const request = await fetch(
-    `http://www.omdbapi.com/?s=${query.value}&apikey=fdb9148b`
-  );
-  console.log(request);
-  data.value = await request.json();
+  movieStore.getMovies(query.value);
 };
 
 const addMovie = (movie: Movie) => {
@@ -52,8 +43,8 @@ const inCollection = (movie: Movie) => {
 
   <button @click="search">Search</button>
 
-  <template v-if="data">
-    <div v-for="movie in data.Search" class="movie" :key="movie.imdbID">
+  <template v-if="movieStore.movies">
+    <div v-for="movie in movieStore.movies" class="movie" :key="movie.imdbID">
       <PosterTile :title="movie.Title" :image="movie.Poster" :year="movie.Year">
         <template #top>
           <template v-if="!inCollection(movie)">
