@@ -17,22 +17,21 @@ defineProps<Props>();
 @import "../assets/global.scss";
 
 .poster {
-  position: relative;
   width: 100%;
   max-width: 300px;
+  position: relative;
 
   .title {
     @extend .heading-font;
     font-size: 2rem;
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
     text-overflow: wrap;
   }
 
   .image {
-    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    box-sizing: border-box;
     border: 10px solid white;
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.3);
   }
 }
 </style>

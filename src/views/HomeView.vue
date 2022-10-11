@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import PosterTile from "@/components/PosterTile.vue";
 
 type Movie = {
   Poster: string;
@@ -39,10 +40,7 @@ const addMovie = (movie: Movie) => {
 
   <template v-if="data">
     <div v-for="movie in data.Search" class="movie" :key="movie.imdbID">
-      <div class="title">{{ movie.Title }}</div>
-      <div class="poster">
-        <img :src="movie.Poster" />
-      </div>
+      <PosterTile :title="movie.Title" :image="movie.Poster" />
       <button @click="addMovie(movie)">Add to collection</button>
     </div>
   </template>
