@@ -5,6 +5,7 @@ export default {
   component: PosterTile,
   argTypes: {
     title: { control: "text" },
+    image: { control: "text" },
   },
 };
 
@@ -17,3 +18,7 @@ const Template = (args) => ({
 });
 
 export const Default = Template.bind({});
+Default.args = {
+  title: "Rambo",
+  image: "https://placehold.co/300x445",
+};
