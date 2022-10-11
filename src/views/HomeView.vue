@@ -8,7 +8,6 @@ import { useMovieStore, type Movie } from "@/stores/movies";
 import { useCollectionStore } from "@/stores/collection";
 
 const query = ref<string>("");
-const movies = ref<Movie[] | null>([]);
 
 const movieStore = useMovieStore();
 const collectionStore = useCollectionStore();
