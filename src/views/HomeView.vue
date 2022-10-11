@@ -5,26 +5,24 @@ import RoundButton from "../components/RoundButton.vue";
 import HeartIcon from "../components/icons/HeartIcon.vue";
 import TrashIcon from "../components/icons/TrashIcon.vue";
 import { useMovieStore, type Movie } from "@/stores/movies";
+import { useCollectionStore } from "@/stores/collection";
 
 const query = ref<string>("");
-const data = ref<any | null>(null);
 const movies = ref<Movie[] | null>([]);
 
 const movieStore = useMovieStore();
+const collectionStore = useCollectionStore();
 
 const search = async () => {
   movieStore.getMovies(query.value);
 };
 
 const addMovie = (movie: Movie) => {
-  movies.value?.push(movie);
+  collectionStore.addMovie(movie);
 };
 
 const removeMovie = (movie: Movie) => {
-  movies.value =
-    movies.value?.filter((m) => {
-      return m != movie;
-    }) || [];
+  collectionStore.removeMovie(movie);
 };
 
 const inCollection = (movie: Movie) => {
@@ -37,8 +35,10 @@ const inCollection = (movie: Movie) => {
   <p>Searching for {{ query }}</p>
   <input v-model.trim="query" />
 
-  <ul v-if="movies">
-    <li v-for="movie in movies" :key="movie.imdbID">{{ movie.Title }}</li>
+  <ul v-if="collectionStore.movies">
+    <li v-for="movie in collectionStore.movies" :key="movie.imdbID">
+      {{ movie.Title }}
+    </li>
   </ul>
 
   <button @click="search">Search</button>
