@@ -9,6 +9,9 @@ defineProps<Props>();
 
 <template>
   <div class="poster">
+    <div class="top">
+      <slot name="top"></slot>
+    </div>
     <img class="image" :src="image" />
     <div class="title">{{ title }}</div>
     <div class="year">{{ year }}</div>
@@ -22,6 +25,12 @@ defineProps<Props>();
   width: 100%;
   max-width: 300px;
   position: relative;
+
+  .top {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
 
   .title {
     @extend .heading-font;
