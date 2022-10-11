@@ -8,6 +8,7 @@ describe("PosterTile.vue", () => {
       props: {
         title: "Poster Tile",
         image: "http://placehold.co/300x445",
+        year: "1920",
       },
     });
 
@@ -15,6 +16,7 @@ describe("PosterTile.vue", () => {
       props: {
         title: "Rambo",
         image: "http://placehold.co/400x600",
+        year: "2020",
       },
     });
 
@@ -22,10 +24,12 @@ describe("PosterTile.vue", () => {
     expect(firstComponent.find("img").attributes("src")).toBe(
       "http://placehold.co/300x445"
     );
+    expect(firstComponent.text()).toContain("1920");
 
     expect(secondComponent.text()).toContain("Rambo");
     expect(secondComponent.find("img").attributes("src")).toBe(
       "http://placehold.co/400x600"
     );
+    expect(secondComponent.text()).toContain("2020");
   });
 });

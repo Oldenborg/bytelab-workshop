@@ -2,6 +2,7 @@
 interface Props {
   title: string;
   image: string;
+  year: string;
 }
 defineProps<Props>();
 </script>
@@ -10,6 +11,7 @@ defineProps<Props>();
   <div class="poster">
     <img class="image" :src="image" />
     <div class="title">{{ title }}</div>
+    <div class="year">{{ year }}</div>
   </div>
 </template>
 
@@ -32,6 +34,12 @@ defineProps<Props>();
     box-sizing: border-box;
     border: 10px solid white;
     box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.3);
+  }
+
+  .year {
+    @extend .body-font;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
   }
 }
 </style>

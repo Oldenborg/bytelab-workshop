@@ -6,6 +6,7 @@ export default {
   argTypes: {
     title: { control: "text" },
     image: { control: "text" },
+    year: { control: "text" },
   },
 };
 
@@ -21,4 +22,5 @@ export const Default = Template.bind({});
 Default.args = {
   title: "Rambo",
   image: "https://placehold.co/300x445",
+  year: "2013",
 };

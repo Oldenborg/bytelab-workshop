@@ -40,7 +40,11 @@ const addMovie = (movie: Movie) => {
 
   <template v-if="data">
     <div v-for="movie in data.Search" class="movie" :key="movie.imdbID">
-      <PosterTile :title="movie.Title" :image="movie.Poster" />
+      <PosterTile
+        :title="movie.Title"
+        :image="movie.Poster"
+        :year="movie.Year"
+      />
       <button @click="addMovie(movie)">Add to collection</button>
     </div>
   </template>
