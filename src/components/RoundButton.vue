@@ -1,7 +1,7 @@
 <script setup lang="ts">
 interface Props {
-  success: boolean;
-  danger: boolean;
+  success?: boolean;
+  danger?: boolean;
 }
 defineProps<Props>();
 </script>
@@ -21,6 +21,9 @@ defineProps<Props>();
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &.success {
     background: #63d790;

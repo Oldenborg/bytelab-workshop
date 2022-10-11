@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import PosterTile from "@/components/PosterTile.vue";
+import RoundButton from "../components/RoundButton.vue";
+import HeartIcon from "../components/icons/HeartIcon.vue";
 
 type Movie = {
   Poster: string;
@@ -42,7 +44,9 @@ const addMovie = (movie: Movie) => {
     <div v-for="movie in data.Search" class="movie" :key="movie.imdbID">
       <PosterTile :title="movie.Title" :image="movie.Poster" :year="movie.Year">
         <template #top>
-          <button @click="addMovie(movie)">Add to collection</button>
+          <RoundButton @click="addMovie(movie)" success>
+            <HeartIcon width="20px"></HeartIcon>
+          </RoundButton>
         </template>
       </PosterTile>
     </div>
