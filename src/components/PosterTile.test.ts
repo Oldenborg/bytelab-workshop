@@ -4,7 +4,7 @@ import PosterTile from "./PosterTile.vue";
 
 describe("PosterTile.vue", () => {
   it("Renders correctly", () => {
-    const wrapper = mount(PosterTile);
+    const wrapper = mount(PosterTile, { props: { title: "Poster Tile" } });
 
     expect(wrapper.text()).toContain("Poster Tile");
   });
