@@ -1,16 +1,16 @@
 <script setup lang="ts">
+import router from "@/router";
 import { useMovieStore } from "@/stores/movies";
-import { ref } from "vue";
 
 const movieStore = useMovieStore();
 
-const query = ref<string>("");
-const search = async () => {
-  movieStore.getMovies(query.value);
+const search = () => {
+  movieStore.getMovies();
+  router.push({ path: "/" });
 };
 </script>
 
 <template>
-  <input v-model.trim="query" />
+  <input v-model.trim="movieStore.query" />
   <button @click="search">Search</button>
 </template>

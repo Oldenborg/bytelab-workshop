@@ -9,18 +9,20 @@ export interface Movie {
 }
 
 export interface MoviesState {
+  query: string;
   movies: Movie[];
 }
 
 export const useMovieStore = defineStore({
   id: "movies",
   state: (): MoviesState => ({
+    query: "",
     movies: [],
   }),
   actions: {
-    async getMovies(s: string) {
+    async getMovies() {
       const request = await fetch(
-        `http://www.omdbapi.com/?s=${s}&apikey=fdb9148b`
+        `http://www.omdbapi.com/?s=${this.query}&apikey=fdb9148b`
       );
       const data = await request.json();
       this.movies = data.Search;
