@@ -6,6 +6,7 @@ import HeartIcon from "../components/icons/HeartIcon.vue";
 import TrashIcon from "../components/icons/TrashIcon.vue";
 import { useMovieStore, type Movie } from "@/stores/movies";
 import { useCollectionStore } from "@/stores/collection";
+import NavigationBar from "../components/NavigationBar.vue";
 
 const query = ref<string>("");
 
@@ -33,6 +34,7 @@ const inCollection = (movieId: string) => {
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
+        <NavigationBar />
         <h1>My Movie collection!</h1>
         <input v-model.trim="query" />
         <ul v-if="collectionStore.movies">
