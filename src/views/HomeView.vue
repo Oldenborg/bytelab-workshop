@@ -30,34 +30,54 @@ const inCollection = (movieId: string) => {
 </script>
 
 <template>
-  <h1>My Movie collection!</h1>
-  <p>Searching for {{ query }}</p>
-  <input v-model.trim="query" />
-
-  <ul v-if="collectionStore.movies">
-    <li v-for="movie in collectionStore.movies" :key="movie.imdbID">
-      {{ movie.Title }}
-    </li>
-  </ul>
-
-  <button @click="search">Search</button>
-
-  <template v-if="movieStore.movies">
-    <div v-for="movie in movieStore.movies" class="movie" :key="movie.imdbID">
-      <PosterTile :title="movie.Title" :image="movie.Poster" :year="movie.Year">
-        <template #top>
-          <template v-if="!inCollection(movie.imdbID)">
-            <RoundButton @click="addMovie(movie)" success>
-              <HeartIcon width="20px"></HeartIcon>
-            </RoundButton>
-          </template>
-          <template v-else>
-            <RoundButton @click="removeMovie(movie)" danger>
-              <TrashIcon width="20px"></TrashIcon>
-            </RoundButton>
-          </template>
-        </template>
-      </PosterTile>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>My Movie collection!</h1>
+        <input v-model.trim="query" />
+        <ul v-if="collectionStore.movies">
+          <li v-for="movie in collectionStore.movies" :key="movie.imdbID">
+            {{ movie.Title }}
+          </li>
+        </ul>
+        <button @click="search">Search</button>
+      </div>
     </div>
-  </template>
+
+    <template v-if="movieStore.movies">
+      <div class="row">
+        <div
+          v-for="movie in movieStore.movies"
+          class="col-xs-6 col-sm-4 col-md-3 col-lg-2"
+          :key="movie.imdbID"
+        >
+          <PosterTile
+            :title="movie.Title"
+            :image="movie.Poster"
+            :year="movie.Year"
+            class="bully"
+          >
+            <template #top>
+              <template v-if="!inCollection(movie.imdbID)">
+                <RoundButton @click="addMovie(movie)" success>
+                  <HeartIcon width="20px"></HeartIcon>
+                </RoundButton>
+              </template>
+              <template v-else>
+                <RoundButton @click="removeMovie(movie)" danger>
+                  <TrashIcon width="20px"></TrashIcon>
+                </RoundButton>
+              </template>
+            </template>
+          </PosterTile>
+        </div>
+      </div>
+    </template>
+  </div>
 </template>
+
+<style lang="scss">
+.bully {
+  margin-bottom: 40px;
+}
+</style>

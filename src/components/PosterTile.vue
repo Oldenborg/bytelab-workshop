@@ -23,7 +23,6 @@ defineProps<Props>();
 
 .poster {
   width: 100%;
-  max-width: 300px;
   position: relative;
 
   .top {
