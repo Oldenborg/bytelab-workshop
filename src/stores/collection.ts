@@ -28,4 +28,5 @@ export const useCollectionStore = defineStore({
         state.movies.find((movie) => movie.imdbID === movieId);
     },
   },
+  persist: true,
 });
