@@ -1,7 +1,15 @@
+<script setup lang="ts">
+import SmartSearchComponent from "@/components/SmartSearchComponent.vue";
+</script>
 <template>
   <nav>
-    <RouterLink to="/">Home</RouterLink>
-    <RouterLink to="/collection">My collection</RouterLink>
+    <div class="links">
+      <RouterLink to="/">Home</RouterLink>
+      <RouterLink to="/collection">My collection</RouterLink>
+    </div>
+    <div class="search">
+      <SmartSearchComponent />
+    </div>
   </nav>
 </template>
 
@@ -11,7 +19,7 @@
 nav {
   background: #333;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
 }

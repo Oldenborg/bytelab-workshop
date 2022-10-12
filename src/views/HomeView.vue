@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import PosterTile from "@/components/PosterTile.vue";
 import RoundButton from "../components/RoundButton.vue";
 import HeartIcon from "../components/icons/HeartIcon.vue";
@@ -8,14 +7,8 @@ import { useMovieStore, type Movie } from "@/stores/movies";
 import { useCollectionStore } from "@/stores/collection";
 import NavigationBar from "../components/NavigationBar.vue";
 
-const query = ref<string>("");
-
 const movieStore = useMovieStore();
 const collectionStore = useCollectionStore();
-
-const search = async () => {
-  movieStore.getMovies(query.value);
-};
 
 const addMovie = (movie: Movie) => {
   collectionStore.addMovie(movie);
@@ -35,9 +28,6 @@ const inCollection = (movieId: string) => {
     <div class="row">
       <div class="col-xs-12">
         <NavigationBar />
-        <h1>My Movie collection!</h1>
-        <input v-model.trim="query" />
-        <button @click="search">Search</button>
       </div>
     </div>
 
