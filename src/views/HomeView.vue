@@ -37,11 +37,6 @@ const inCollection = (movieId: string) => {
         <NavigationBar />
         <h1>My Movie collection!</h1>
         <input v-model.trim="query" />
-        <ul v-if="collectionStore.movies">
-          <li v-for="movie in collectionStore.movies" :key="movie.imdbID">
-            {{ movie.Title }}
-          </li>
-        </ul>
         <button @click="search">Search</button>
       </div>
     </div>
